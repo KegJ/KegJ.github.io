@@ -9,7 +9,7 @@ input:focus, select:focus, textarea:focus,button:focus {
 
 .previewBox {
 	text-align: center;
-	margin: 50px auto;
+	margin: 6% auto 10px auto;
 	display: block;
 }
 
