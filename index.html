@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RGB Picker</title>
+		<link href="./rgb.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="previewBox">
+			<div id="colorSwath">
+			</div>
+			<p id="previewText">rgb(127, 127, 127)</p>
+			<span class="inputs">
+			<input type="text" id="redInput" value="127">
+			<input type="text" id="greenInput" value="127">
+			<input type="text" id="blueInput" value="127">
+			<button onclick="updateColors()">Set</button>
+			</span>
+		</div>
+			<div id="colorSlider">
+  			<input type="range" min="0" max="255" value="127" class="slider" id="redRange">
+  			<p id="redOutput"></p>
+		</div>
+		<div id="colorSlider">
+  			<input type="range" min="0" max="255" value="127" class="slider" id="greenRange">
+  			<p id="greenOutput"></p>
+		</div>
+		<div id="colorSlider">
+  			<input type="range" min="0" max="255" value="127" class="slider" id="blueRange">
+  			<p id="blueOutput"></p>
+		</div>
+
+	<script>
+		var rSlider = document.getElementById("redRange");
+		var rOutput = document.getElementById("redOutput");
+		var gSlider = document.getElementById("greenRange");
+		var gOutput = document.getElementById("greenOutput");
+		var bSlider = document.getElementById("blueRange");
+		var bOutput = document.getElementById("blueOutput");
+		var preview = document.getElementById("colorSwath");
+		var previewText = document.getElementById("previewText");
+		var rgb = 'rgb(127,127,127)'
+		preview.style.background = 'rgb(127,127,127)'
+		
+		rOutput.innerHTML = rSlider.value;
+		gOutput.innerHTML = gSlider.value;
+		bOutput.innerHTML = bSlider.value;
+		
+		rSlider.oninput = function() {
+			rOutput.innerHTML = this.value;
+			rgb = `rgb(${rSlider.value}, ${gSlider.value}, ${bSlider.value})`;
+			preview.style.background = rgb;
+			previewText.innerHTML = rgb;			
+		}
+		
+		gSlider.oninput = function() {
+			gOutput.innerHTML = this.value;
+			rgb = `rgb(${rSlider.value}, ${gSlider.value}, ${bSlider.value})`;
+			preview.style.background = rgb;
+			previewText.innerHTML = rgb;
+		}
+		
+		bSlider.oninput = function() {
+			bOutput.innerHTML = this.value;
+			rgb = `rgb(${rSlider.value}, ${gSlider.value}, ${bSlider.value})`;
+			preview.style.background = rgb;
+			previewText.innerHTML = rgb;
+		}
+		
+		function updateColors() {
+			if (document.getElementById("redInput").value < 256 && document.getElementById("greenInput").value < 256 && document.getElementById("blueInput").value < 256) {
+				rSlider.value = document.getElementById("redInput").value;
+				rOutput.innerHTML = document.getElementById("redInput").value;
+				gSlider.value = document.getElementById("greenInput").value;
+				gOutput.innerHTML = document.getElementById("greenInput").value;
+				bSlider.value = document.getElementById("blueInput").value;
+				bOutput.innerHTML = document.getElementById("blueInput").value;
+		
+				rgb = `rgb(${rSlider.value}, ${gSlider.value}, ${bSlider.value})`;
+				preview.style.background = rgb;
+				previewText.innerHTML = rgb;
+			}
+		}
+	</script>
+	</body>
+</html>
